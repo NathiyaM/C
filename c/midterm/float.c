@@ -1,13 +1,15 @@
 #include<stdio.h>
 int main()
 {
-int count, a;
-float num1,num2;
-while(count!=-1)
-{
-printf("Please enter float number seperated by space and press enter:\n");
-a=scanf("%f%f",&num1,&num2);
-printf("%d",a);
-}
+	int a,b;
+	float num1,num2;
+	printf("Please enter float number seperated by space and press enter:\n");
+	while(scanf("%f%f",&num1,&num2)!=2)
+	{
+		while(getchar()!='\n')
+		continue;
+		printf("You have invalid choice,Try again");
+	}
+	printf("The numbers are %.2f%.2f",num1,num2);
 }
 

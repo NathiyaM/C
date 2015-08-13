@@ -8,7 +8,7 @@ class myqueue:
 	def dequeue(self):
 		return self.li.pop(0)
 
-'''a=[1,2,3]
+a=[1,2,3]
 q=myqueue(a)
 print a
 q.enqueue(7)
