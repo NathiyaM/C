@@ -3,6 +3,6 @@ int main()
 {
 int myInt=65;
 char myChar = 'A'; 
-printf("%c, %d", myInt, myChar);
+printf("%d, %d", myInt, myChar);
 }
  

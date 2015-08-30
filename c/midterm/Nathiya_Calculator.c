@@ -67,6 +67,7 @@ int getchoice(void)
 		if(choice<1 || choice>5)
  		printf("\nThat is not a invalid choice,Please re-enter");	
 	}while(choice<1 ||choice>5);
+	return choice;
 }
 //Addition operation
 void addition(void)
