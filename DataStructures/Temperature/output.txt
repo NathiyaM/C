@@ -1,0 +1,18 @@
+The conversion Type as follows 
+ 1. Centigrade to Fahrenheit degress 
+ 2. Fahrenheit to Celsius degree 
+ 3. Exit
+Enter the Choice in number:1
+Enter the Temperature in Celsius to convert to Fahrenheit degree:100
+The C to F is 212.00
+The conversion Type as follows 
+ 1. Centigrade to Fahrenheit degress 
+ 2. Fahrenheit to Celsius degree 
+ 3. ExitEnter the Choice in number: 2
+Enter the Temperature in Fahrenheit to convert to Temperature degrees:104
+The C to F is 40.00
+The conversion Type as follows 
+ 1. Centigrade to Fahrenheit degress 
+ 2. Fahrenheit to Celsius degree 
+ 3. ExitEnter the Choice in number:3
+Going to exit....

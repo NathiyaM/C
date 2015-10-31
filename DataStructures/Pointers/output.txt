@@ -1,0 +1,8 @@
+The value of the variables              Address of the variables                 Address of the Pointers
+        25                              0x7ffd9b102f94                          0x7ffd9b102f94
+        3.142                           0x7ffd9b102f98                          0x7ffd9b102f98
+        1.73217                         0x7ffd9b102f60                          0x7ffd9b102f60
+        X                               0x7ffd9b102f9f                          0x7ffd9b102f9f
+        Hello,C Programmer                      0x7ffd9b102fa0                  0x7ffd9b102fa0
+The values after dereferencing the pointers is 
+        X       1.73217 3.142   25      Hello,C Programmer

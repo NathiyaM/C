@@ -1,0 +1,24 @@
+/********************************************************************************/
+/************************** Prologue ********************************************/
+/*                                                                              */
+/*          University of California Extension,Santa Cruz                   	*/
+/*                                                                              */
+/*                                                                              */
+/* 			Advanced C Programming                                           	*/
+/*                                                                              */
+/* 			Instructor :Rajainder A.Yeldandi									*/
+/*                                                                              */
+/* 			Author:Nathiya Meganathan											*/
+/*																				*/
+/*			Assignment No:1														*/
+/*																				*/
+/*			Topic:Temperature													*/
+/*																				*/
+/*			FileName:Temperature.c												*/
+/*			Date of the Program:10.24.2015										*/
+/*			Objective:Conversion of Temperature in Centigrade or				*/
+/*			Celsius to Fahrenheit degrees and Fahrenheit to Celsius degree		*/
+/********************************************************************************/  
+
+/* Preprocessor Directives */
+

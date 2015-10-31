@@ -1,0 +1,21 @@
+Enter the number of scores you are going to enter
+15
+Enter the scores one at a time
+91
+92
+85
+68
+87
+75
+89
+97
+79
+65
+88
+72
+81
+94
+90
+The Minimum Score is 65.00
+The Maximum Score is 97.00
+The Average score is 83.53

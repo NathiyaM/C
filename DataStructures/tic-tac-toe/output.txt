@@ -1,0 +1,283 @@
+Case:1
+
+WELCOME TO TIC-TAC-TOE GAME
+PLAYER1 plays against another PLAYER2
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)1 1
+ X |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)2 1
+ X |   |   |   
+---|---|---|---
+ 0 |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)2 2
+ X |   |   |   
+---|---|---|---
+ 0 | X |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)1 4
+ X |   |   | 0 
+---|---|---|---
+ 0 | X |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)3 3
+ X |   |   | 0 
+---|---|---|---
+ 0 | X |   |   
+---|---|---|---
+   |   | X |   
+---|---|---|---
+   |   |   |   
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)2 3
+ X |   |   | 0 
+---|---|---|---
+ 0 | X | 0 |   
+---|---|---|---
+   |   | X |   
+---|---|---|---
+   |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)4 4
+Congrats, Player1 Wins
+ X |   |   | 0 
+---|---|---|---
+ 0 | X | 0 |   
+---|---|---|---
+   |   | X |   
+---|---|---|---
+   |   |   | X 
+
+Case:2
+
+WELCOME TO TIC-TAC-TOE GAME
+PLAYER1 plays against another PLAYER2
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)1 1
+ X |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)2 3
+ X |   |   |   
+---|---|---|---
+   |   | 0 |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)2 1
+ X |   |   |   
+---|---|---|---
+ X |   | 0 |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)4 1
+ X |   |   |   
+---|---|---|---
+ X |   | 0 |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+ 0 |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)1 2
+ X | X |   |   
+---|---|---|---
+ X |   | 0 |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+ 0 |   |   |   
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)3 2
+ X | X |   |   
+---|---|---|---
+ X |   | 0 |   
+---|---|---|---
+   | 0 |   |   
+---|---|---|---
+ 0 |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)1 3
+ X | X | X |   
+---|---|---|---
+ X |   | 0 |   
+---|---|---|---
+   | 0 |   |   
+---|---|---|---
+ 0 |   |   |   
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)1 4
+Congrats, Player2  Wins
+ X | X | X | 0 
+---|---|---|---
+ X |   | 0 |   
+---|---|---|---
+   | 0 |   |   
+---|---|---|---
+ 0 |   |   |   
+
+Case:3
+
+WELCOME TO TIC-TAC-TOE GAME
+PLAYER1 plays against another PLAYER2
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)1 1
+ X |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)4 1
+ X |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+ 0 |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)1 2
+ X | X |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+ 0 |   |   |   
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)4 1
+Invalid move, try again.
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)1 4
+ X | X |   | 0 
+---|---|---|---
+   |   |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+ 0 |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)2 2
+ X | X |   | 0 
+---|---|---|---
+   | X |   |   
+---|---|---|---
+   |   |   |   
+---|---|---|---
+ 0 |   |   |   
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)3 2
+ X | X |   | 0 
+---|---|---|---
+   | X |   |   
+---|---|---|---
+   | 0 |   |   
+---|---|---|---
+ 0 |   |   |   
+Hi Player1,Enter the X and Y coordinates start from (1to4)2 3
+ X | X |   | 0 
+---|---|---|---
+   | X | X |   
+---|---|---|---
+   | 0 |   |   
+---|---|---|---
+ 0 |   |   |   
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)4 4
+ X | X |   | 0 
+---|---|---|---
+   | X | X |   
+---|---|---|---
+   | 0 |   |   
+---|---|---|---
+ 0 |   |   | 0 
+Hi Player1,Enter the X and Y coordinates start from (1to4)3 4
+ X | X |   | 0 
+---|---|---|---
+   | X | X |   
+---|---|---|---
+   | 0 |   | X 
+---|---|---|---
+ 0 |   |   | 0 
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)3 3
+ X | X |   | 0 
+---|---|---|---
+   | X | X |   
+---|---|---|---
+   | 0 | 0 | X 
+---|---|---|---
+ 0 |   |   | 0 
+Hi Player1,Enter the X and Y coordinates start from (1to4)1 3
+ X | X | X | 0 
+---|---|---|---
+   | X | X |   
+---|---|---|---
+   | 0 | 0 | X 
+---|---|---|---
+ 0 |   |   | 0 
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)2 1
+ X | X | X | 0 
+---|---|---|---
+ 0 | X | X |   
+---|---|---|---
+   | 0 | 0 | X 
+---|---|---|---
+ 0 |   |   | 0 
+Hi Player1,Enter the X and Y coordinates start from (1to4)2 4
+ X | X | X | 0 
+---|---|---|---
+ 0 | X | X | X 
+---|---|---|---
+   | 0 | 0 | X 
+---|---|---|---
+ 0 |   |   | 0 
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)3 1
+ X | X | X | 0 
+---|---|---|---
+ 0 | X | X | X 
+---|---|---|---
+ 0 | 0 | 0 | X 
+---|---|---|---
+ 0 |   |   | 0 
+Hi Player1,Enter the X and Y coordinates start from (1to4)4 1
+Invalid move, try again.
+Hi Player1,Enter the X and Y coordinates start from (1to4)4 2
+ X | X | X | 0 
+---|---|---|---
+ 0 | X | X | X 
+---|---|---|---
+ 0 | 0 | 0 | X 
+---|---|---|---
+ 0 | X |   | 0 
+Hi Player2 Enter the X and Y coordinates start from (1 to 4)4 3
+Match Draw
