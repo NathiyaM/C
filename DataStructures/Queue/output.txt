@@ -1,0 +1,13 @@
+The Item Pushed on to the stack is 25
+The Item Pushed on to the stack is 37
+The Item Pushed on to the stack is 45
+The Item Pushed on to the stack is 52
+The Item Pushed on to the stack is 98
+poped item is25
+poped item is37
+poped item is45
+The Item Pushed on to the stack is 36
+The Item Pushed on to the stack is 12
+poped item is52
+poped item is98
+The Item Pushed on to the stack is 69

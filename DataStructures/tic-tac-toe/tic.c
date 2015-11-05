@@ -20,7 +20,7 @@ char board[3][3];
 char computer, user;
 
 /* Initialize the board, ask who goes first, play a game, ask if user wants to play again. */
-int main(void)
+void start(void)
 {
   while(1)
     {
@@ -40,7 +40,6 @@ int main(void)
 	break;
     }
 
-  return 0;
 }
 
 /* Make sure board starts off empty. */

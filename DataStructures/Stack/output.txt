@@ -1,0 +1,63 @@
+The Item Pushed on to the stack is {
+The operators or operands are ignored x
+The operators or operands are ignored +
+The Item Pushed on to the stack is (
+The operators or operands are ignored y
+The operators or operands are ignored -
+The Item Pushed on to the stack is [
+The operators or operands are ignored a
+The operators or operands are ignored +
+The operators or operands are ignored b
+poped item is[
+poped item is(
+The operators or operands are ignored *
+The Item Pushed on to the stack is (
+The operators or operands are ignored c
+The operators or operands are ignored -
+The Item Pushed on to the stack is [
+The Item Pushed on to the stack is (
+The operators or operands are ignored d
+The operators or operands are ignored +
+The operators or operands are ignored e
+poped item is(
+poped item is[
+The operators or operands are ignored +
+The operators or operands are ignored k
+poped item is(
+poped item is{
+The operators or operands are ignored /
+The Item Pushed on to the stack is (
+The operators or operands are ignored h
+The operators or operands are ignored -
+The Item Pushed on to the stack is (
+The operators or operands are ignored j
+The operators or operands are ignored -
+The Item Pushed on to the stack is (
+The operators or operands are ignored k
+The operators or operands are ignored -
+The Item Pushed on to the stack is [
+The operators or operands are ignored l
+The operators or operands are ignored -
+The operators or operands are ignored n
+poped item is[
+poped item is(
+poped item is(
+poped item is(
+The operators or operands are ignored +
+The Item Pushed on to the stack is {
+The operators or operands are ignored u
+The operators or operands are ignored +
+The Item Pushed on to the stack is [
+The operators or operands are ignored m
+The operators or operands are ignored *
+The Item Pushed on to the stack is (
+The operators or operands are ignored p
+The operators or operands are ignored -
+The operators or operands are ignored q
+poped item is(
+poped item is[
+The operators or operands are ignored /
+The operators or operands are ignored r
+The operators or operands are ignored  
+poped item is{
+The Expression is Valid
