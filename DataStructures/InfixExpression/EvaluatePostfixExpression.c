@@ -12,7 +12,7 @@ double eval (char [] );
 double pop (struct stack *);
 void push (struct stack *, double);
 int empty (struct stack *);
-int isdigit (char);
+//int isdigit (int);
 double oper (int, double, double);
 
 void main ()
@@ -25,10 +25,10 @@ void main ()
 	printf ("\n %f", eval (expr) );
 	return;
 }
-int isdigit (char symb)
+/*int isdigit (int symb)
 {
-	return (symb >= '0' && symb <= '9');
-}
+	return (symb >= 0 && symb <= 9);
+}	*/
 
 double eval (char expr [] )
 {
@@ -62,12 +62,12 @@ double oper (int symb, double op1, double op2)
 {
 	switch (symb)
 	{
-		case '+' : return (op1 + op2);
-		case '-' : return (op1 - op2);
-		case '*' : return (op1 * op2);
-		case '/' : return (op1 / op2);
-		case '%' : return ( (int) op1 % (int)op2 );
-		case '^' : return ( pow( op1, op2) );
+		case + : return (op1 + op2);
+		case - : return (op1 - op2);
+		case * : return (op1 * op2);
+		case / : return (op1 / op2);
+		case % : return ( (int) op1 % (int)op2 );
+		case ^ : return (pow( op1,op2) );
 		default : printf ("%s", "illegal operation");
 		exit (1);
 	} /* end of switch symb */
