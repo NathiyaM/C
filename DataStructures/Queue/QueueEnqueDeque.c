@@ -32,25 +32,27 @@
 /*Queue Declaration */
 struct queue
 {
-	int	front=0,rear=0;
+	int	front,rear;
 	int queueelement[MAXSIZE];
 };
+
 /* function protoype for push,pop,Empty */
 void Enqueue(struct queue *ps,int data);
 int Dequeue(struct queue *ps);
 int EmptyQueue(struct queue *ps);
 void print(struct queue *ps);
-/*Main Program DEclaration */
+/*Main Program Declaration */
 int main(int argc,	char *argv[])
 {
-	/*Decalration of File pointer for opening and reading the characters from the file */
+	/*Declaration of File pointer for opening and reading the characters from the file */
 	FILE *iptr;
-	/* Structure Variable Declaration */
-	struct queue Q, *q;
-	//Intializing the Queue 
-	Q.front = Q.rear= -1;
 	char choice;
-	int i,data,p_num;
+	/* Structure Variable Declaration */
+struct queue Q, *q;
+//Intializing the Queue 
+Q.front = -1;
+Q.rear= -1;
+int i,data,p_num;
 	q = &Q;
 	/*Checking the commandline arguments*/
 	if (argc!=2)
@@ -107,7 +109,12 @@ return 0;
 /*Function Definiton for enqueue operation */
 void Enqueue(struct queue *ps,int data)
 {
-	//Check for overflow
+	 if(ps->rear==MAXSIZE-1)
+		ps->rear=0;
+	else
+		(ps->rear)++;
+
+  //Check for overflow
 	if(ps->rear==ps->front)
 	{
 		printf("The Item cannot be pushed onto the queue\n");
@@ -118,11 +125,7 @@ void Enqueue(struct queue *ps,int data)
 		ps->queueelement[ps->rear]=data;
 		printf("So,The Item Pushed on to the queue is %d\n",data);
 	}	
-  if(ps->rear==MAXSIZE-1)
-		ps->rear=0;
-	else
-		(ps->rear)++;
-
+ 
 	return;
 }
 /*Function Definition for Dequeue operation */
@@ -155,7 +158,6 @@ void print(struct queue *ps)
   if(EmptyQueue(ps))
   {
     printf("The Queue is Empty\n,Going to Exit");
-    exit(1);
   }
 	printf("The items left in the queue after reading all the inputs are\n");
   i=ps->front;
@@ -164,7 +166,7 @@ void print(struct queue *ps)
     printf("%d\n",ps->queueelement[i]);
     i=(i+1)%MAXSIZE;
   }
-  printf("%d\n",ps->queueelement[ps->rear]);
+ // printf("%d\n",ps->queueelement[ps->rear]);
 
 }
 

@@ -16,10 +16,10 @@
 /*                                                                              */
 /*          FileName:TowersofHonoi.                                             */
 /*          Date of the Program:10.30.2015                                      */
-/*          Objective:prompt the user to give the number of disks to be 		*/
-/*			placed on the target post from the initial post using the 			*/	
-/*			auxilary post.              										 */
-/*               																 */
+/*          Objective:prompt the user to give the number of disks to be 	    	*/
+/*			    placed on the target post from the initial post using the     		 	*/	
+/*		    	auxilary post.                                 										  */
+/*               															                                	 */
 /********************************************************************************/
 
 /* Preprocessor Directives */
@@ -35,11 +35,11 @@ int main()
  	printf("Enter the number of disks : ");
     scanf("%d", &num);
     printf("The sequence of moves involved in the Tower of Hanoi are :\n");
-    towers(num, 'A', 'C', 'B');
+    towers(num, 'A', 'B', 'C');
     return 0;
 }
 
-void towers(int num, char source, char dest, char auxi)
+void towers(int num, char source, char auxi, char dest)
 {
     if (num == 1)
     {
@@ -47,8 +47,9 @@ void towers(int num, char source, char dest, char auxi)
         return;
     }
     //recursion function call
-	towers(num - 1, source, auxi, dest);
-    printf("\n Move disk %d from peg %c to peg %c", num, source, dest);
+	towers(num - 1, source,dest,auxi);
+    printf("\n Move disk %d from peg %c to peg %c", num, source,dest);
     //recursion function call
-	towers(num - 1, auxi, dest, source);
+	towers(num - 1, auxi, source,dest);
+    //recursion function call
 }
