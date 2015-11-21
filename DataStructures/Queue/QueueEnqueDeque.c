@@ -36,11 +36,14 @@ struct queue
 	int queueelement[MAXSIZE];
 };
 
+struct queue Q, *ps;
+struct queue Q.front = -1;
+Q.rear= -1;
 /* function protoype for push,pop,Empty */
-void Enqueue(struct queue *ps,int data);
-int Dequeue(struct queue *ps);
-int EmptyQueue(struct queue *ps);
-void print(struct queue *ps);
+void Enqueue(int data);
+int Dequeue();
+int EmptyQueue();
+void print();
 /*Main Program Declaration */
 int main(int argc,	char *argv[])
 {
@@ -48,12 +51,11 @@ int main(int argc,	char *argv[])
 	FILE *iptr;
 	char choice;
 	/* Structure Variable Declaration */
-struct queue Q, *q;
+
 //Intializing the Queue 
-Q.front = -1;
-Q.rear= -1;
+
 int i,data,p_num;
-	q = &Q;
+	
 	/*Checking the commandline arguments*/
 	if (argc!=2)
 	{
@@ -80,16 +82,16 @@ int i,data,p_num;
 					{
 						fscanf(iptr,"%d",&data);
 						printf("The input read from the file is%c\n",choice);
-						Enqueue(q,data);//function calling
-            print(q);
+						Enqueue(data);//function calling
+            print();
 						break;
 					}
 					case 'D':
 					{
-						p_num=Dequeue(q);
+						p_num=Dequeue();
 						printf("The input read from the file is%c\n",choice);
 						printf("Item dequeued from the queue is %d\n",p_num);
-             print(q);
+             print();
 						break;
 					}
             
@@ -97,7 +99,7 @@ int i,data,p_num;
 			}
 		fclose (iptr);
 		}
-      print(q);
+      print();
 /*		printf("The items left in the queue after reading all the inputs are\n");
 		for(i=0;i<MAXSIZE;i++)
 		{
@@ -107,7 +109,7 @@ int i,data,p_num;
 return 0;
 }
 /*Function Definiton for enqueue operation */
-void Enqueue(struct queue *ps,int data)
+void Enqueue(int data)
 {
 	 if(ps->rear==MAXSIZE-1)
 		ps->rear=0;
@@ -129,7 +131,7 @@ void Enqueue(struct queue *ps,int data)
 	return;
 }
 /*Function Definition for Dequeue operation */
-int Dequeue(struct queue *ps)
+int Dequeue()
 {
 	if(EmptyQueue(ps))
 	{
@@ -143,7 +145,7 @@ int Dequeue(struct queue *ps)
 		return (ps->queueelement[ps->front]);
 }
 /*Check whether the queue is empty or not */
-int EmptyQueue(struct queue *ps)
+int EmptyQueue()
 {
 	if(ps->front==ps->rear)
 	  return 1;
@@ -151,7 +153,7 @@ int EmptyQueue(struct queue *ps)
 		return 0;
 }
 
-void print(struct queue *ps)
+void print()
 {
  int i;
 
