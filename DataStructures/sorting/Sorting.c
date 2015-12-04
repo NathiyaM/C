@@ -44,7 +44,7 @@ and split the records as number, and store them in the array.*/
 		fclose(iptr);//closing of reading file
 	}
 	printf("Enter the choice in which method you want your array to be sorted\n");
-	printf("1.Simple Sort 2.Advance Sort\n");
+	printf("1.Simple Sort\n 2.Advance Sort\n");
     printf("enter your choice\n");
 	scanf("%d", &choice);
 	switch(choice)
@@ -59,15 +59,23 @@ and split the records as number, and store them in the array.*/
     	{
         	case 1:
                 bubblesort(number, SIZE);
+                printf("The Array Elements  after sorting is \n");
+                printarray(number,SIZE);
             	break;
         	case 2:
                 insertsort(number, SIZE);
+                printf("The Array Elements  after sorting is \n");
+                printarray(number,SIZE);
                 break;
             case 3:
                 selectionsort(number, SIZE);
+                printf("The Array Elements  after sorting is \n");
+                printarray(number,SIZE);
                 break;
             case 4:
                 shellsort(number, SIZE);
+                printf("The Array Elements  after sorting is \n");
+                printarray(number,SIZE);
                 break;
     	}
     	break;
@@ -109,6 +117,7 @@ void printarray(int arraynum[], int size)
 	{
 		printf("%d\t", arraynum[i]);
 	}
+	printf("\n");
 }
 
 //Bubble Sort Implemetation
@@ -126,7 +135,7 @@ void bubblesort(int array[], int size)
 			}
 		}
 	}
-	printarray(array,size);
+	
 }
 
 //Insert Sort Implemetation
@@ -142,7 +151,7 @@ void insertsort(int array[], int size)
 			j=j-1;
 		}
 	}
-			printarray(array, size);
+	return;		
 }
 
 //selectionsort Implemetation
@@ -166,7 +175,7 @@ void selectionsort(int array[], int size)
 	}
 
 	}	
-	printarray(array, size);
+	return;
 }
 
 //shellsort implementation
@@ -190,7 +199,7 @@ void shellsort(int array[],int size)
             }
         }
     }
-	printarray(array, size);
+	
     return ;
 }
 
