@@ -1,3 +1,29 @@
+/*****************************************************************************/
+/************************** Prologue ********************************************/
+/*                                                                              */
+/*          University of California Extension,Santa Cruz                     	*/
+/*                                                                              */
+/*                                                                              */
+/* 			Advanced C Programming                                              */
+/*                                                                              */
+/* 			Instructor :Rajainder A.Yeldandi							       	*/
+/*                                                                              */
+/* 			Author:Nathiya Meganathan										   	*/
+/*																			                                      	*/
+/*			Assignment No:12									             	*/
+/*																			                                      	*/
+/*			Topic:Sorting				                                      	*/
+/*									                                          	*/
+/*			FileName:Sorting.c							                    	*/
+/*			Date of the Program:12.02.2015				                     	*/
+/*			Objective:  implement 4 simple sort routines and three advanced sort 
+            routines. prompt the user to select one of the simple sort routines 
+            and one of the advanced sort routines. 
+            output should consists of 2 selections of one simple sort routine
+            and one advanced sort routine.													                            */
+/********************************************************************************/  
+/* Preprocessor Directives */
+
 #include<stdio.h>
 #include<stdlib.h>
 #define SIZE 40
