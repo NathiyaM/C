@@ -1,3 +1,30 @@
+/*****************************************************************************/
+/************************** Prologue ********************************************/
+/*                                                                              */
+/*          University of California Extension,Santa Cruz                     	*/
+/*                                                                              */
+/*                                                                              */
+/* 			Advanced C Programming                                              */
+/*                                                                              */
+/* 			Instructor :Rajainder A.Yeldandi							        */
+/*                                                                              */
+/* 			Author:Nathiya Meganathan										    */
+/*								            	 									                                      	*/
+/*			Assignment No:		11      									    */
+/*																			                                      	*/
+/*			Topic:LinkedList									                */
+/*	    								                                      	*/
+/*			FileName:LinkedList.c							               		*/
+/*			Date of the Program:12.2.2015										*/
+/*			Objective: Read the input from the input file
+            not initialized an array with input numbers.
+            Create and add the link to the list as  read the input. 
+            Prompt the user for deleting the entries from the list and 
+            output after each deletion.          							    */						                            */
+/********************************************************************************/  
+//Predefined directives.
+
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<malloc.h>
@@ -11,7 +38,8 @@ typedef struct node
 node* createnode(int data);
 void insertnode(int data);
 void deletenode();
-void display();
+void displaynode();
+void display_after_reverse();
 void reverse();
 node *start=NULL;
 node *temp,*ptr;
@@ -42,11 +70,10 @@ void deletenode_beg();
 				insertnode(data);
 			}
 			fclose(iptr);
-			display();
-		    reverse();
-		    display();
-		    deletenode();
 		}
+		displaynode();
+		reverse();
+		deletenode();
 	}
 	return 0;
  }
@@ -91,8 +118,7 @@ void insertnode(int data)
     }
 }
     
-    
-void display()
+void displaynode()
 {
     ptr=start;
     while(ptr->link!=NULL)
@@ -102,15 +128,27 @@ void display()
     }
     printf("NULL\n");
 }
+    
+void display_after_reverse()
+{
+    ptr=start;
+    while(ptr!=NULL)
+    {
+        printf("%d->",ptr->data);
+        ptr=ptr->link;
+    }
+    printf("NULL\n");
+}
+
 
 void deletenode()
 {
     int data[9],i,validdata[9],invaliddata[9];
-    printf("Enter the data tobe deleted seperated by spaces");
+    printf("Enter the data tobe deleted seperated by spaces one at a time");
     for(i=0;i<9;i++)
     {
         scanf("%d",&data[i]);
-         node *preptr;
+        node *preptr;
         preptr=start;
         ptr=preptr->link;
          /* if(ptr->data==data)
@@ -124,7 +162,7 @@ void deletenode()
                  preptr->link=ptr->link;
                  free(ptr);
                  validdata[i]=data[i];
-                 invaliddata[i]=0;
+                 invaliddata[i]=-1;
                  break;
             }
             else
@@ -145,59 +183,41 @@ void deletenode()
             continue;
         }
         printf("%d\t",validdata[i]);
+        printf("\n");
         
     }
     printf("Invalid Data are\n");
      for(i=0;i<9;i++)
     {
-        if(invaliddata[i]==0)
+        if(invaliddata[i]==-1)
         {
             continue;
-        }
+        } 
         printf("%d\t",invaliddata[i]);
+        printf("\n");
         
     }
     
     printf("The node after deleted is\n");
-    display();
+    display_after_reverse();
 }
 
-
-void deletenode_beg()
-{
-    ptr=start;
-    if(start==NULL)
-    {
-        printf("Item cannot be find");
-    }
-    start=ptr->link;
-    free(ptr);
-    
-}
-
+// reverse the list.
 void reverse()
 {
-    if(start == NULL)
+    struct node *p, *q, *r;
+    p = q = r = start;
+    p = p->link->link;
+    q = q->link;
+    r->link = NULL;
+    q->link = r;
+    while (p->link!= NULL)
     {
-        printf("List is empty");
-        return;
+        r = q;
+        q = p;
+        p = p->link;
+        q->link = r;
     }
-    else if(start->link==NULL)
-        printf("The numbers are reveresed\n");
-    struct node *p1,*p2,*p3;
-    p1=start;
-    p2=p1->link;
-    p3=p2->link;
-    p1->link=NULL;
-    p2->link=p1;
-    while(p3->link!=NULL)
-    {
-        p1=p2;
-        p2=p3;
-        p3=p3->link;
-        p2->link=p1;
-    }
-    start=p2;
-    printf("List Reversed");
-
+    start = q;
+    display_after_reverse();
 }
