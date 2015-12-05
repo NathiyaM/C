@@ -59,7 +59,7 @@ int main(int argc,char *argv[])
     printf ( "Binary tree postorder Traversal:\n" ) ;
     postorder ( bt ) ;
     printf("\n");
-    /*
+    
     if ( (iptr = fopen (argv[1],"r")) == NULL)
     {
         	printf("Error in opening files...");
@@ -74,7 +74,7 @@ int main(int argc,char *argv[])
         inorder ( bt ) ;
 	}
 	fclose(iptr);
-	} */
+	} 
 	if ( (iptr = fopen (argv[2],"r")) == NULL)
     {
         	printf("Error in opening files...");
@@ -120,14 +120,14 @@ if ( num < ( *sr ) -> data )
 }
 
 /* deletes a node from the binary search tree */
-/*
+
 void delete ( struct btreenode **root, int num )
 {
     int found ;
     struct btreenode *parent, *x, *xsucc ;
 
     /* if tree is empty */ 
-    /*
+    
 if ( *root == NULL )
     {
         printf ( "\nTree is empty" ) ;
@@ -138,17 +138,17 @@ if ( *root == NULL )
 
     /* call to search function to find the node to be deleted */
 
- /*   search ( root, num, &parent, &x, &found ) ;
+ /  search ( root, num, &parent, &x, &found ) ;
 
     /* if the node to deleted is not found */
-/*if ( found == FALSE )
+if ( found == FALSE )
     {
         printf ( "\nData to be deleted, not found" ) ;
         return ;
     }
 
     /* if the node to be deleted has two children */
-/*if ( x -> leftchild != NULL && x -> rightchild != NULL )
+if ( x -> leftchild != NULL && x -> rightchild != NULL )
     {
         parent = x ;
         xsucc = x -> rightchild ;
@@ -164,7 +164,7 @@ if ( *root == NULL )
     }
 
     /* if the node to be deleted has no child */
-/*if ( x -> leftchild == NULL && x -> rightchild == NULL )
+if ( x -> leftchild == NULL && x -> rightchild == NULL )
     {
         if ( parent -> rightchild == x )
             parent -> rightchild = NULL ;
@@ -176,7 +176,7 @@ if ( *root == NULL )
     }
 
     /* if the node to be deleted has only rightchild */
-/*if ( x -> leftchild == NULL && x -> rightchild != NULL )
+if ( x -> leftchild == NULL && x -> rightchild != NULL )
     {
         if ( parent -> leftchild == x )
             parent -> leftchild = x -> rightchild ;
@@ -188,7 +188,7 @@ if ( *root == NULL )
     }
 
     /* if the node to be deleted has only left child */
-/*if ( x -> leftchild != NULL && x -> rightchild == NULL )
+if ( x -> leftchild != NULL && x -> rightchild == NULL )
     {
         if ( parent -> leftchild == x )
             parent -> leftchild = x -> leftchild ;
