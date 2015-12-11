@@ -1,135 +1,221 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<malloc.h>
-//Strcutre declaration of nodes
-struct Node {
-    int data;
-   struct Node *left;
-    struct Node *right;
-};
-typedef struct Node Node;
-//Function Prototypes
-void insertnode(Node *root,int data);
-//void search(Node *root,int data);
-Node* getnewnode(int data);
-void preorder(Node *root);
-void inorder(Node *root);
-void postorder(Node *root);
-//main function
-int main(int argc,char *argv[])
-{
-    
-    Node *root=NULL;
-    FILE *iptr;
-     int data;
-     if (argc!=2)
-	{
-		printf ("usage:program name, Input File\n");
-		exit (1);
-	} 
-	/*Start Opening and reading the char from the file one by one,if can't open
-	  the file,raise the exception*/
-	else
-	{
-		if ( (iptr = fopen (argv[1],"r")) == NULL)
+#include <stdio.h>
+#include <stdlib.h>
+
+  struct treeNode {
+        int data;
+        struct treeNode *left, *right;
+  };
+
+  struct treeNode *root = NULL;
+
+  /* create a new node with the given data */
+  struct treeNode* createNode(int data) {
+        struct treeNode *newNode;
+        newNode = (struct treeNode *) malloc(sizeof (struct treeNode));
+        newNode->data = data;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        return(newNode);
+  }
+
+  /* insertion in binary search tree */
+  void insertion(struct treeNode **node, int data) {
+        if (*node == NULL) {
+                *node = createNode(data);
+        } else if (data < (*node)->data) {
+                insertion(&(*node)->left, data);
+        } else if (data > (*node)->data) {
+                insertion(&(*node)->right, data);
+        }
+  }
+
+
+  /* deletion in binary search tree */
+  void deletion(struct treeNode **node, struct treeNode **parent, int data) 
+  {
+        struct treeNode *tmpNode, *tmpParent;
+        if (*node == NULL)
+                return;
+        if ((*node)->data == data) {
+                /* deleting the leaf node */
+                if (!(*node)->left && !(*node)->right) {
+                        if (parent) {
+                                /* delete leaf node */
+                                if ((*parent)->left == *node)
+                                        (*parent)->left = NULL;
+                                else
+                                        (*parent)->right = NULL;
+                                free(*node);
+                        } else {
+                                /* delete root node with no children */
+                                free(*node);
+                        }
+                /* deleting node with one child */
+                } 
+                else if (!(*node)->right && (*node)->left) {
+                        /* deleting node with left child alone */
+                        tmpNode = *node;
+                        (*parent)->right = (*node)->left;
+                        free(tmpNode);
+                        *node = (*parent)->right;
+                } 
+                else if ((*node)->right && !(*node)->left) {
+                        /* deleting node with right child alone */
+                        tmpNode = *node;
+                        (*parent)->left = (*node)->right;
+                        free(tmpNode);
+                        (*node) = (*parent)->left;
+                } 
+                else if (!(*node)->right->left) 
+                {
+                        /*
+                         * deleting a node whose right child
+                         * is the smallest node in the right
+                         * subtree for the node to be deleted.
+                         */
+
+                        tmpNode = *node;
+
+                        (*node)->right->left = (*node)->left;
+
+                        (*parent)->left = (*node)->right;
+                        free(tmpNode);
+                        *node = (*parent)->left;
+                } else {
+                        /*
+                         * Deleting a node with two children.
+                         * First, find the smallest node in
+                         * the right subtree.  Replace the 
+                         * smallest node with the node to be
+                         * deleted. Then, do proper connections
+                         * for the children of replaced node.
+                         */
+                        tmpNode = (*node)->right;
+                        while (tmpNode->left) {
+                                tmpParent = tmpNode;
+                                tmpNode = tmpNode->left;
+                        }
+                        tmpParent->left = tmpNode->right;
+                        tmpNode->left = (*node)->left;
+                        tmpNode->right =(*node)->right;
+                        free(*node);
+                        *node = tmpNode;
+                }
+        } 
+        else if (data < (*node)->data)
+        {
+                /* traverse towards left subtree */
+                deletion(&(*node)->left, node, data);
+        } 
+        else if (data > (*node)->data)
+        {
+                /* traversing towards right subtree */
+                deletion(&(*node)->right, node, data);
+        }
+  }
+
+  /* search the given element in binary search tree */
+  void findElement(struct treeNode *node, int data) {
+        if (!node)
+                return;
+        else if (data < node->data) {
+                findElement(node->left, data);
+        } else if (data > node->data) {
+                findElement(node->right, data);
+        } else
+                printf("data found: %d\n", node->data);
+        return;
+
+  }
+
+  void inorder(struct treeNode *node) {
+        if (node != NULL) {
+                inorder(node->left);
+                printf("%d\t", node->data);
+                inorder(node->right);
+        }
+        return;
+  }
+
+  void preorder(struct treeNode *node) 
+  {
+        if (node != NULL) 
+        {
+            printf("%d\t", node->data);
+            preorder(node->left);
+            preorder(node->right);
+        }
+        
+        return;
+  }
+  
+void postorder(struct treeNode *node) 
+  {
+        if (node != NULL) {
+            
+            postorder(node->left);
+            postorder(node->right);
+            printf("%d\t", node->data);
+        }
+        
+        return;
+  }
+  
+  int main(int argc,char *argv[])
+  {
+        int data,i;
+        FILE *iptr;
+                                
+        if ( (iptr = fopen (argv[1],"r")) == NULL)
         {
         	printf("Error in opening files...");
         }
 		else
-		{
-			while(!feof(iptr))
-			{
-				fscanf (iptr,"%d", &data);
-				insertnode(root,data);
-			}
-			fclose(iptr);
-			printf("The Data are displayed in preorder traversal\n");
-			preorder(root);
-			printf("The Data are displayed in Inorder traversal\n");
-			inorder(root);
-			printf("The Data are displayed in postorder traversal\n");
-			postorder(root);
-		}
-	}
-	return 0;
-}
-
-Node* getnewnode(int data)
-{
-    Node* newnode;
-    newnode= (Node *)malloc(sizeof(Node));
-    newnode->data=data;
-    newnode->left=newnode->right=NULL;
-    return newnode;
-}
-
-/*Function to insert the node into the tree,
-if the root greater the node ,insert the data to the right side 
-of the node assign right and left node to null ,similarly,if the 
-root node data less than the data then create create the node on the 
-left insert the data on the left node */
-void insertnode(Node *root,int data)
-{
-    if(root==NULL)
-    {
-        root=getnewnode( data);
-    }
-    else if(data < root->data)
-    {
-        insertnode(root->left, data);
-    }
-    else
-    {
-        insertnode(root->right,data);
-    }
-    
-}
-/*Search the reacord based on the root,call the function recursively 
-to find the data */
-/*int search(Node *root,int data)
-{
-    if(root==NULL)
+	    {
+		    while(!feof(iptr))
+		    {
+			    fscanf (iptr,"%d", &data);
+				insertion(&root, data);
+			 }
+		
+		          fclose(iptr);
+	    }
+	                   
+                                printf("Inorder Traversal:\n");
+                                inorder(root);
+                                printf("\n");
+                                printf("Preorder Traversal:\n");
+                                preorder(root);
+                                printf("\n");
+                                printf("Postorder Traversal:\n");
+                                postorder(root);
+                                printf("\n");
+                                
+                        
+                            if ( (iptr = fopen (argv[1],"r")) == NULL)
+                            {
+        	                    printf("Error in opening files...");
+                            }
+		                    else
+	                    	{
+		                    	while(!feof(iptr))
+		                    	{
+			                	fscanf (iptr,"%d", &data);
+                                deletion(&root, NULL, data);
+        
+		                    	}
+		                    	printf("Data after deletion in Inorder Traversal format:\n");
+                                inorder(root);
+		                    	fclose(iptr);
+	                    	}
+	                   /*
+                                printf("Enter value for data:");
+                                scanf("%d", &data);
+                                findElement(root, data);
+                                
+                        
+                     */
+                                    
         return 0;
-    else if(root->data==data)
-        return 1;
-    else if(data<root->data)
-        search(root->left,data);
-    else
-        search(root->right,data);
-} */
 
-/*Display the data from root,left node,right node*/
-void preorder(Node *root)
-{
-    if(root==NULL)
-    {
-        return;
-    }
-    printf("%d\t",root->data);
-    preorder(root->left);
-    preorder(root->right);
-}
-
-/*Display the data from left node,root,right node*/
-void inorder(Node *root)
-{
-    if(root==NULL)
-    {
-        return;
-    }
-    inorder(root->left);
-    printf("%d\t",root->data);
-    inorder(root->right);
-}
-
-/*Display the data from left node,right node,root*/
-void postorder(Node *root)
-{
-    if(root==NULL)
-    {
-        return;
-    }
-    postorder(root->left);
-    postorder(root->right);
-    printf("%d\t",root->data);
-}
+  }

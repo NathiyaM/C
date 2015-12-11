@@ -12,8 +12,8 @@ struct btreenode
     struct btreenode *rightchild ;
 } ;
 
-void insert ( struct btreenode **, int ) ;
-void delete ( struct btreenode **, int ) ;
+struct btreenode* insert ( struct btreenode **, int ) ;
+struct btreenode* delete ( struct btreenode **, int ) ;
 void search ( struct btreenode **, int, struct btreenode **,
                 struct btreenode **, int * ) ;
 void inorder ( struct btreenode * ) ;
@@ -45,7 +45,7 @@ int main(int argc,char *argv[])
 			while(!feof(iptr))
 			{
 				fscanf (iptr,"%d", &data);
-				insert(&bt,data);
+				bt=insert(&bt,data);
 			}
 			fclose(iptr);
 		}
@@ -69,7 +69,7 @@ int main(int argc,char *argv[])
     while(!feof(iptr))
 	{
 		fscanf (iptr,"%d", &data);
-		delete ( &bt, data ) ;
+		bt=delete ( &bt, data ) ;
 		printf ( "\nBinary tree after deletion:\n" ) ;
         inorder ( bt ) ;
 	}
@@ -97,7 +97,7 @@ int main(int argc,char *argv[])
 return 0;
 }
 /* inserts a new node in a binary search tree */
-void insert ( struct btreenode **sr, int num )
+struct btreenode* insert ( struct btreenode **sr, int num )
 {
     if ( *sr == NULL )
     {
@@ -111,124 +111,126 @@ void insert ( struct btreenode **sr, int num )
 
     {
         /* if new data is less, traverse to left */
-if ( num < ( *sr ) -> data )
-            insert ( &( ( *sr ) -> leftchild ), num ) ;
+        if ( num < ( *sr ) -> data )
+            *sr=insert ( &( ( *sr ) -> leftchild ), num ) ;
         else/* else traverse to right */
 
-            insert ( &( ( *sr ) -> rightchild ), num ) ;
+            *sr=insert ( &( ( *sr ) -> rightchild ), num ) ;
     }
+    return(*sr);
 }
 
-/* deletes a node from the binary search tree */
-
-void delete ( struct btreenode **root, int num )
-{
-    int found ;
-    struct btreenode *parent, *x, *xsucc ;
-
-    /* if tree is empty */ 
-    
-if ( *root == NULL )
-    {
-        printf ( "\nTree is empty" ) ;
-        return ;
-    }
-
-    parent = x = NULL ;
-
-    /* call to search function to find the node to be deleted */
-
- /  search ( root, num, &parent, &x, &found ) ;
-
-    /* if the node to deleted is not found */
-if ( found == FALSE )
-    {
-        printf ( "\nData to be deleted, not found" ) ;
-        return ;
-    }
-
-    /* if the node to be deleted has two children */
-if ( x -> leftchild != NULL && x -> rightchild != NULL )
-    {
-        parent = x ;
-        xsucc = x -> rightchild ;
-
-        while ( xsucc -> leftchild != NULL )
-        {
-            parent = xsucc ;
-            xsucc = xsucc -> leftchild ;
+struct btreenode *getptr(struct btreenode **p, int key, struct btreenode **y) {
+    struct btreenode *temp; 
+    if( *p == NULL) 
+    return(NULL); 
+    temp = *p; 
+    *y = NULL; 
+    while( temp != NULL) 
+    { 
+        if(temp->data == key) 
+            return(temp);
+        else 
+        { 
+            *y = temp;
+            /*store this pointer as root */ 
+            if(temp->data > key)
+                temp = temp->leftchild; 
+            else 
+                 temp = temp->rightchild; 
+         } 
+        
+    } 
+    return(NULL);
+    } 
+/* A function to delete the node whose data value is given */ 
+struct btreenode* delete(struct btreenode **p,int val) 
+{ 
+    struct btreenode *x, *y, *temp; 
+    x = getptr(&(*p),val,&y); 
+    if( x == NULL)
+    { 
+        printf("The node does not exists\n"); 
+       // return(*p);
+        } 
+        else
+        { 
+            /* this code is for deleting root node*/
+            if( x == *p)
+            { 
+                temp = x->leftchild; 
+                y = x->rightchild;
+                *p = temp;
+                while(temp->rightchild != NULL) 
+                temp = temp->rightchild;
+                temp->rightchild=y;
+                free(x); 
+                return(*p);
+                }
+                /* this code is for deleting node having both children */
+                if( x->leftchild != NULL && x->rightchild != NULL) 
+                {
+                    if(y->leftchild == x)
+                    {
+                        temp = x->leftchild; 
+                        y->leftchild = x->leftchild; 
+                        while(temp->rightchild != NULL) 
+                        temp = temp->rightchild; 
+                        temp->rightchild=x->rightchild; 
+                        x->leftchild=NULL; 
+                        x->rightchild=NULL; 
+                        
+                    } 
+                    else
+                    {
+                        temp = x->rightchild;
+                        y->rightchild = x->rightchild; 
+                        while(temp->leftchild != NULL)
+                        temp = temp->leftchild; 
+                        temp->leftchild=x->leftchild; 
+                        x->leftchild=NULL; x->rightchild=NULL; 
+                        
+                    }
+                    free(x); 
+                    return(*p); 
+                    
+                } 
+                /* this code is for deleting a node with on child*/ 
+                if(x->leftchild == NULL && x->rightchild != NULL)
+                { 
+                    if(y->leftchild == x) 
+                        y->leftchild = x->rightchild;
+                    else 
+                        y->rightchild = x->rightchild;
+                        x->rightchild = NULL; 
+                        free(x); 
+                        return(*p);
+                } 
+                if( x->leftchild != NULL && x->rightchild == NULL) 
+                { 
+                    if(y->leftchild == x)
+                    y->leftchild = x->leftchild ; 
+                    else
+                    y->rightchild = x->leftchild; 
+                    x->leftchild = NULL; 
+                    free(x); 
+                    return(*p); 
+                    
+                } 
+                /* this code is for deleting a node with no child*/ 
+                if(x->leftchild == NULL && x->rightchild == NULL) 
+                {
+                    if(y->leftchild == x) 
+                    y->leftchild = NULL ;
+                    else 
+                    y->rightchild = NULL; 
+                    free(x);
+                   return(*p); 
+                    
+                } 
+            
         }
-
-        x -> data = xsucc -> data ;
-        x = xsucc ;
     }
-
-    /* if the node to be deleted has no child */
-if ( x -> leftchild == NULL && x -> rightchild == NULL )
-    {
-        if ( parent -> rightchild == x )
-            parent -> rightchild = NULL ;
-        else
-            parent -> leftchild = NULL ;
-
-        free ( x ) ;
-        return ;
-    }
-
-    /* if the node to be deleted has only rightchild */
-if ( x -> leftchild == NULL && x -> rightchild != NULL )
-    {
-        if ( parent -> leftchild == x )
-            parent -> leftchild = x -> rightchild ;
-        else
-            parent -> rightchild = x -> rightchild ;
-
-        free ( x ) ;
-        return ;
-    }
-
-    /* if the node to be deleted has only left child */
-if ( x -> leftchild != NULL && x -> rightchild == NULL )
-    {
-        if ( parent -> leftchild == x )
-            parent -> leftchild = x -> leftchild ;
-        else
-            parent -> rightchild = x -> leftchild ;
-
-        free ( x ) ;
-        return ;
-    }
-}
-
-/*returns the address of the node to be deleted, address of its parent and
-   whether the node is found or not */
-void search ( struct btreenode **root, int num, struct btreenode **par, struct
-        btreenode **x, int *found )
-{
-    struct btreenode *q ;
-
-    q = *root ;
-    *found = FALSE ;
-    *par = NULL ;
-
-    while ( q != NULL )
-    {
-        /* if the node to be deleted is found */
-if ( q -> data == num )
-        {
-            *found = TRUE ;
-            *x = q ;
-            return ;
-        }
-
-        *par = q ;
-
-        if ( q -> data > num )
-            q = q -> leftchild ;
-        else
-            q = q -> rightchild ;
-    }
-}
 
 /*Search the reacord based on the root,call the function recursively 
 to find the data */
