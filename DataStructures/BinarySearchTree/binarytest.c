@@ -12,6 +12,12 @@ struct btreenode
     struct btreenode *rightchild ;
 } ;
 
+struct sNode{
+	struct btreenode *t;
+	struct sNode *next;
+};
+
+
 void insert ( struct btreenode **, int ) ;
 void delete ( struct btreenode **, int ) ;
 void search ( struct btreenode **, int, struct btreenode **,
@@ -23,7 +29,7 @@ int find(struct btreenode *sr,int num);
 int main(int argc,char *argv[])
 {
     struct btreenode *bt ;
-    int req, i = 0, num ;
+    int req, i = 0, num,choice=1 ;
     bt = NULL ;  /* empty tree */
     FILE *iptr;
     int data;
@@ -59,22 +65,19 @@ int main(int argc,char *argv[])
     printf ( "Binary tree postorder Traversal:\n" ) ;
     postorder ( bt ) ;
     printf("\n");
-    
-    if ( (iptr = fopen (argv[1],"r")) == NULL)
+    while(choice==1)
     {
-        	printf("Error in opening files...");
-    }
-	else
-	{
-    while(!feof(iptr))
-	{
-		fscanf (iptr,"%d", &data);
-		delete ( &bt, data ) ;
-		printf ( "\nBinary tree after deletion:\n" ) ;
+        printf("Enter the data tobe deleted\n");
+        scanf("%d",&data);
+	    delete ( &bt, data ) ;
+	    printf ( "\nBinary tree after deletion %d:\n",data ) ;
         inorder ( bt ) ;
-	}
-	fclose(iptr);
-	} 
+        printf("Do you want to continue deletion:(1/0)\n");
+        scanf("%d",&choice);
+    }
+
+    printf("\n");
+    printf("Searaching Item in the Tree\n");
 	if ( (iptr = fopen (argv[2],"r")) == NULL)
     {
         	printf("Error in opening files...");
@@ -120,7 +123,7 @@ void insert ( struct btreenode **sr, int num )
   //  return(*sr);
 }
 
-void delete_node(struct btreenode **node, int value)
+void delete(struct btreenode **node, int value)
 {
 	struct btreenode *current = NULL, *del_node = NULL, *child = NULL;
 	struct btreenode *parent = NULL, *x = NULL;
@@ -137,14 +140,14 @@ void delete_node(struct btreenode **node, int value)
 					parent->leftchild = NULL;
 					free(del_node);
 					printf("Node deleted\n");
-				//	break;
+					break;
 				}
 				//if the node to delete is to the right of root
 				else if (parent->rightchild == del_node) {
 					parent->rightchild = NULL;
 					free(del_node);
 					printf("Node deleted\n");
-				//	break;
+					break;
 				}
 			}
 		//case 2: node has one child
@@ -156,7 +159,7 @@ void delete_node(struct btreenode **node, int value)
 						child = del_node->leftchild;
 						parent->leftchild = child;
 						free(del_node);
-					//	break;
+						break;
 					}
 					else if (del_node->rightchild != NULL) {
 						child = del_node->rightchild;
@@ -171,13 +174,13 @@ void delete_node(struct btreenode **node, int value)
 						child = del_node->leftchild;
 						parent->rightchild = child;
 						free(del_node);
-					//	break;
+						break;
 					}
 					else if (del_node->rightchild != NULL) {
 						child = del_node->rightchild;
 						parent->rightchild = child;
 						free(del_node);
-					//	break;
+						break;
 					}
 				}						
 			}
@@ -292,6 +295,10 @@ void inorder ( struct btreenode *sr )
         inorder ( sr -> rightchild ) ;
     }
 }
+
+
+
+
 
 /* traverse a binary search tree in a DLR (Data-Left-Right) fashion */
 void preorder ( struct btreenode *sr )
