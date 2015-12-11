@@ -83,7 +83,6 @@
                 for (pos = node->count;
                         (val < node->val[pos] && pos > 1); pos--);
                 if (val == node->val[pos]) {
-                        printf("Duplicates not allowed\n");
                         return 0;
                 }
         }
@@ -226,80 +225,7 @@
         }
   }
 
-  /* delete val from the node */
-  int delValFromNode(int val, struct btreeNode *myNode) {
-        int pos, flag = 0;
-        if (myNode) {
-                if (val < myNode->val[1]) {
-                        pos = 0;
-                        flag = 0;
-                } else {
-                        for (pos = myNode->count;
-                                (val < myNode->val[pos] && pos > 1); pos--);
-                         if (val == myNode->val[pos]) {
-                                flag = 1;
-                        } else {
-                                flag = 0;
-                        }
-                }
-                if (flag) {
-                        if (myNode->link[pos - 1]) {
-                                copySuccessor(myNode, pos);
-                                flag = delValFromNode(myNode->val[pos], myNode->link[pos]);
-                                if (flag == 0) {
-                                        printf("Given data is not present in B-Tree\n");
-                                }
-                        } else {
-                                removeVal(myNode, pos);
-                        }
-                } else {
-                        flag = delValFromNode(val, myNode->link[pos]);
-                }
-                if (myNode->link[pos]) {
-                        if (myNode->link[pos]->count < MIN)
-                                adjustNode(myNode, pos);
-                }
-        }
-        return flag;
-  }
-
-  /* delete val from B-tree */
-  void deletion(int val, struct btreeNode *myNode) {
-        struct btreeNode *tmp;
-        if (!delValFromNode(val, myNode)) {
-                printf("Given value is not present in B-Tree\n");
-                return;
-        } else {
-                if (myNode->count == 0) {
-                        tmp = myNode;
-                        myNode = myNode->link[0];
-                        free(tmp);
-                }
-        }
-        root = myNode;
-        return;
-  }
-
-  /* search val in B-Tree */
-  void searching(int val, int *pos, struct btreeNode *myNode) {
-        if (!myNode) {
-                return;
-        }
-
-        if (val < myNode->val[1]) {
-                *pos = 0;
-        } else {
-                for (*pos = myNode->count;
-                        (val < myNode->val[*pos] && *pos > 1); (*pos)--);
-                if (val == myNode->val[*pos]) {
-                        printf("Given data %d is present in B-Tree", val);
-                        return;
-                }
-        }
-        searching(val, pos, myNode->link[*pos]);
-        return;
-  }
-
+  
   /* B-Tree Traversal */
   void traversal(struct btreeNode *myNode) {
         int i;
@@ -312,38 +238,26 @@
         }
   }
 
-  int main() {
-        int val, ch;
-        while (1) {
-                printf("1. Insertion\t2. Deletion\n");
-                printf("3. Searching\t4. Traversal\n");
-                printf("5. Exit\nEnter your choice:");
-                scanf("%d", &ch);
-                switch (ch) {
-                        case 1:
-                                printf("Enter your input:");
-                                scanf("%d", &val);
-                                insertion(val);
-                                break;
-                        case 2:
-                                printf("Enter the element to delete:");
-                                scanf("%d", &val);
-                                deletion(val, root);
-                                break;
-                        case 3:
-                                printf("Enter the element to search:");
-                                scanf("%d", &val);
-                                searching(val, &ch, root);
-                                break;
-                        case 4:
-                                traversal(root);
-                                break;
-                        case 5:
-                                exit(0);
-                        default:
-                                printf("U have entered wrong option!!\n");
-                                break;
-                }
-                printf("\n");
+  int main(int argc,char *argv[]) {
+        int data,i;
+        FILE *iptr;
+                                
+        if ( (iptr = fopen (argv[1],"r")) == NULL)
+        {
+        	printf("Error in opening files...");
         }
+		else
+	    {
+		    while(!feof(iptr))
+		    {
+			    fscanf (iptr,"%d", &data);
+				insertion(data);
+			 }
+		
+		          fclose(iptr);
+	    }
+	            printf("The Data after insertion in Inorder Traversal\n");
+	            traversal(root);
+                printf("\n");
+       
   }
