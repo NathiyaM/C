@@ -20,7 +20,7 @@
             the nodes given in the map. • Show at each step what is the next 
             node considered in the path to destination. • 
             Print the total distance from starting node to terminating node 
-            giving distance between intermediate nodes. 					    */						                            */
+            giving distance between intermediate nodes. 					    */						                            
 /********************************************************************************/  
 //Predefined directives.
 
@@ -42,7 +42,7 @@ int main(void)
            printf("Enter the weightage for node%d -----> node %d:",i,j);
            scanf("%d",&weight[i][j]);
            printf("\n");
-           printf("Do you wish to continue:T/F:");
+           printf("Do you wish to continue:T(1)/F(0):");
            scanf("%d",&choice);
         }    
 

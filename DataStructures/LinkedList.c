@@ -20,7 +20,7 @@
             not initialized an array with input numbers.
             Create and add the link to the list as  read the input. 
             Prompt the user for deleting the entries from the list and 
-            output after each deletion.          							    */						                            */
+            output after each deletion.          							    						                            */
 /********************************************************************************/  
 //Predefined directives.
 
@@ -71,7 +71,9 @@ void deletenode_beg();
 			}
 			fclose(iptr);
 		}
+    printf("The original linked list after node gets inserted is \n");
 		displaynode();
+    printf("The list after reversed is \n");
 		reverse();
 		deletenode();
 	}

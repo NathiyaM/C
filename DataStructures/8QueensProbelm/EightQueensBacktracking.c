@@ -20,7 +20,7 @@
 /*          the queens attack each other. User is prompted to place             */
 /*          the first row queen in any of the eight columns.                    */
 /*          program should be able to place rest of the seven                   */
-/*          queens without attacking each other.							    */						                            */
+/*          queens without attacking each other.							    */						                            
 /********************************************************************************/  
 //Predefined directives.
 #include <stdio.h>
@@ -58,9 +58,8 @@ while(1)
             if(i<0 || i>7)
             {
                 printf("Incorrect Row Number\n");
-				continue;
+				        continue;
             }
-            while(i!=7)
             clearBoard ();
             queencol[++queencount] = i;
             colfree[i] = FALSE;
